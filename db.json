@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "12345678",
+      "phone": "123-456-7890",
+      "role": "user"
+    },
+    {
+      "id": "2",
+      "name": "Kamolas",
+      "email": "john.doeasx@example.com",
+      "password": "12345678",
+      "phone": "123-456-7890",
+      "role": "user"
+    },
+    {
+      "id": "2ca1",
+      "name": "Kamol",
+      "email": "kamol@gmail.com",
+      "password": "12345678",
+      "phone": "123-456-7890",
+      "role": "user"
+    },
+    {
+      "id": "703c",
+      "name": "Rasul sddcsdc",
+      "email": "kamolasx@gmail.com",
+      "password": "87654321",
+      "phone": "123-456-7890",
+      "role": "user"
+    },
+    {
+      "id": "9e5c",
+      "name": "Kamol",
+      "email": "kamol2@gmail.com",
+      "password": "87654321",
+      "phone": "123-456-7890",
+      "role": "admin"
+    },
+    {
+      "id": "2s1",
+      "name": "Saidali",
+      "email": "saika@gmail.com",
+      "password": "87654321",
+      "phone": "123-456-7890",
+      "role": "user"
+    },
+    {
+      "id": "5f5",
+      "name": "Mavlavi",
+      "email": "maiki@gmail.com",
+      "password": "87654321",
+      "phone": "123-456-7890",
+      "role": "user"
+    }
+  ]
+}
