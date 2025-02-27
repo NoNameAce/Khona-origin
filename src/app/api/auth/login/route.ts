@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
+const JWT_SECRET = process.env.JWT_SECRET || "jwt_secret";
 
 export async function POST(request: Request) {
   try {
@@ -18,8 +18,9 @@ export async function POST(request: Request) {
     const dbContent = fs.readFileSync(dbPath, "utf-8");
     const dbData = JSON.parse(dbContent);
     const users = dbData.data || [];
+    
 
-    const user = users.find((u: any) => u.email === email && u.password === password);
+    const user = users.find((u: any) => u.email === email && u.password === password); 
     if (!user) {
       return NextResponse.json({ message: "Invalid credentials." }, { status: 401 });
     }

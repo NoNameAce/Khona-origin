@@ -60,6 +60,7 @@
       "id": "c04b64d1-b787-405c-a227-47fcd162bff7",
       "name": "Kevin Eleven",
       "email": "kevineleven@gmail.com",
+      "password": "12345678",
       "phone": "5429587014",
       "role": "user"
     }
