@@ -26,20 +26,16 @@ export default function ProfilePage() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
 
-  // Decode token on mount
   useEffect(() => {
     const decoded = decodeUserToken();
     if (!decoded) {
-      // No token? redirect to /login
       router.push("/login");
       return;
     }
-    // Set initial values from the decoded token
     setUserName(decoded.name || "");
     setUserEmail(decoded.email || "");
   }, [router]);
 
-  // Setup form with react-hook-form
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     mode: "onChange",
@@ -50,7 +46,6 @@ export default function ProfilePage() {
     },
   });
 
-  // Re-sync form defaults when userName or userEmail change
   useEffect(() => {
     form.reset({
       username: userName,
@@ -61,7 +56,6 @@ export default function ProfilePage() {
 
   function onSubmit(data: ProfileFormValues) {
     console.log("Profile form submitted:", data);
-    // Here you could call an API to update the user's profile
   }
 
   function handleLogout() {
@@ -75,7 +69,6 @@ export default function ProfilePage() {
         <h2 className="text-2xl font-bold mb-4">Profile</h2>
         <p className="text-gray-600 mb-6">This is how others will see you on the site.</p>
 
-        {/* The Profile Form */}
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-gray-700">
@@ -138,7 +131,6 @@ export default function ProfilePage() {
           </button>
         </form>
 
-        {/* Logout Button */}
         <button
           onClick={handleLogout}
           className="mt-4 w-full bg-red-500 text-white p-2 rounded hover:bg-red-600 transition-colors"

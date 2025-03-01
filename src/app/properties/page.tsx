@@ -12,10 +12,10 @@ export default function PropertiesPage() {
   const itemsPerPage = 8;
   const [savedProperties, setSavedProperties] = useState<{ [key: string]: boolean }>({});
 
-  // Filter states
   const [location, setLocation] = useState("");
   const [propertyType, setPropertyType] = useState("");
   const [price, setPrice] = useState("");
+
 
   useEffect(() => {
     async function fetchData() {
@@ -26,10 +26,11 @@ export default function PropertiesPage() {
   }, []);
 
   const filteredProperties = data.filter((prop) => {
+    const numPrice: number = Number(prop.price)
     return (
       (location ? prop.location.toLowerCase().includes(location.toLowerCase()) : true) &&
       (propertyType ? prop.type === propertyType : true) &&
-      (price ? prop.price <= parseFloat(price) : true)
+      (price ? numPrice <= parseFloat(price) : true)
     );
   });
 

@@ -6,7 +6,7 @@ import { getPropertyById, updateProperty } from "@/entities/property/service";
 import { Property } from "@/entities/property/model";
 
 export default function EditProperty() {
-  const { id } = useParams();
+  const { id }: {id: string} = useParams();
   
   const router = useRouter();
 

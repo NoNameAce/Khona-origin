@@ -25,10 +25,11 @@ export default function Registration() {
     setSuccessMessage(null);
 
     const userData = {
-      name: data.userName,  // Using 'name' field here
+      name: data.userName,
       email: data.email,
       password: data.password,
-      phone: data.phone,  // Added 'phone' here
+      confirmpassword: data.confirmPassword,
+      phone: data.phone as string,
     };
 
     try {

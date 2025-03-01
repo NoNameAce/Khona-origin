@@ -2,6 +2,7 @@
 
 import { decodeUserToken, logoutUser } from "@/entities/auth/token";
 import { getProperty } from "@/entities/property/service";
+import { User } from "@/entities/user/model";
 import { getUser } from "@/entities/user/service";
 import { Users, Home, DollarSign, Activity, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -9,7 +10,7 @@ import { useEffect, useState } from "react";
 
 export default function AdminDashboardPage() {
   const router = useRouter();
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<User | null>(null);
 
   const [properties, setProperties] = useState<any[]>([]);
   const [users, setUsers] = useState<any[]>([]);
