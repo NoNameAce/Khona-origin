@@ -13,7 +13,7 @@ export default function AboutPage() {
           selling, or renting properties easier than ever.
         </p>
         <p>
-          Whether you're a first-time homebuyer, an experienced investor, or a property owner looking to sell, Real
+          Whether you&apos;re a first-time homebuyer, an experienced investor, or a property owner looking to sell, Real
           Estate Marketplace has the tools and resources you need to make informed decisions in the real estate market.
         </p>
         <h2 className="text-2xl font-bold mt-8 mb-4">Our Values</h2>
@@ -30,6 +30,5 @@ export default function AboutPage() {
         </p>
       </div>
     </div>
-  )
+  );
 }
-

@@ -29,11 +29,15 @@ export default function Login() {
 
       localStorage.setItem("access_token", token);
 
-
       router.push("/");
       console.log("Login success, token:", token);
-    } catch (error: any) {
-      setFormError(error.message || "Login failed. Please try again.");
+    } catch (error: unknown) {
+      // Typing the error as an instance of Error
+      if (error instanceof Error) {
+        setFormError(error.message || "Login failed. Please try again.");
+      } else {
+        setFormError("Login failed. Please try again.");
+      }
     }
   };
 

@@ -5,6 +5,17 @@ import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+  role: string;
+}
+interface Database {
+  data: User[];
+}
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -13,16 +24,18 @@ export async function POST(request: Request) {
     if (!name || !email || !password || !phone || !confirmPassword) {
       return NextResponse.json({ message: "Missing required fields." }, { status: 400 });
     }
+
     if (password !== confirmPassword) {
       return NextResponse.json({ message: "Passwords do not match." }, { status: 400 });
     }
 
     const dbPath = path.join(process.cwd(), "db.json");
     const dbContent = fs.readFileSync(dbPath, "utf-8");
-    const dbData = JSON.parse(dbContent);
-    const users = dbData.data || [];
 
-    const existingUser = users.find((u: any) => u.email === email);
+    const dbData: Database = JSON.parse(dbContent);
+    const users: User[] = dbData.data || [];
+
+    const existingUser = users.find((u) => u.email === email);
     if (existingUser) {
       return NextResponse.json({ message: "Email already in use." }, { status: 400 });
     }
@@ -32,7 +45,7 @@ export async function POST(request: Request) {
       name,
       email,
       password,
-      phone,  // Added phone here
+      phone,
       role: "user",
     };
 
@@ -41,12 +54,13 @@ export async function POST(request: Request) {
     fs.writeFileSync(dbPath, JSON.stringify(dbData, null, 2), "utf-8");
 
     const token = jwt.sign(
-      { id: newUser.id, name, email, phone, role: newUser.role },  // Include phone in the token payload
+      { id: newUser.id, name, email, phone, role: newUser.role }, 
       JWT_SECRET,
       { expiresIn: "1h" }
     );
 
-    const { password: _, ...userWithoutPassword } = newUser;
+    const { password: _unused, ...userWithoutPassword } = newUser;
+
     return NextResponse.json({ token, user: userWithoutPassword }, { status: 201 });
   } catch (error) {
     console.error("Register error:", error);

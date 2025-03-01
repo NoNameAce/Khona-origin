@@ -6,16 +6,17 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { LogOut } from "lucide-react";
+import { Property } from "@/entities/property/model";
 
 export default function DashboardPage() {
 
 
 
   const router = useRouter();
-  const [allProperties, setAllProperties] = useState<any[]>([]);
-  const [userProperties, setUserProperties] = useState<any[]>([]);
+  const [allProperties, setAllProperties] = useState<Property[]>([]);
+  const [userProperties, setUserProperties] = useState<Property[]>([]);
   const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const [_userEmail, setUserEmail] = useState("");
   const [propAmount, setPropAmount] = useState(0);
 
   useEffect(() => {
@@ -57,7 +58,6 @@ export default function DashboardPage() {
         </button>
       </div>
         <h1 className="text-3xl font-bold mb-6">Welcome {userName}</h1>
-      {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-blue-100 p-6 rounded-lg">
           <h3 className="text-xl font-semibold mb-2">My Properties</h3>
@@ -104,7 +104,7 @@ export default function DashboardPage() {
                   </div>
                 </div>
                 <div className="flex-shrink-0 text-gray-500">
-                  {prop.views || 0} views
+                  {0} views
                 </div>
               </div>
             ))}

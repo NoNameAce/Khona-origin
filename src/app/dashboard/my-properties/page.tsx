@@ -5,13 +5,24 @@ import { deleteProperty, getProperty } from "@/entities/property/service";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
+interface Property {
+  propertyId: string;
+  userId: string;
+  name: string;
+  location: string;
+  price: number;
+  description: string;
+  mainImage?: string;
+}
 
 export default function MyPropertiesPage() {
   const router = useRouter();
-  const [allProperties, setAllProperties] = useState<any[]>([]);
-  const [userProperties, setUserProperties] = useState<any[]>([]);
+  const [allProperties, setAllProperties] = useState<Property[]>([]);
+  const [userProperties, setUserProperties] = useState<Property[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [propertyToDelete, setPropertyToDelete] = useState<any | null>(null);
+  const [propertyToDelete, setPropertyToDelete] = useState<string | null>(null);
 
   const token = useMemo(() => decodeUserToken(), []);
 
@@ -34,7 +45,7 @@ export default function MyPropertiesPage() {
     setUserProperties(filtered);
   }, [allProperties, token, router]);
 
-  const handleDeleteClick = (property: any) => {
+  const handleDeleteClick = (property: Property) => {
     setPropertyToDelete(property.propertyId);
     setIsDialogOpen(true);
   };
@@ -76,9 +87,11 @@ export default function MyPropertiesPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {userProperties.map((prop) => (
             <div key={prop.propertyId} className="border rounded-lg overflow-hidden">
-              <img
+              <Image
                 src={prop.mainImage || `/placeholder.svg?height=200&width=400`}
                 alt={prop.name}
+                width={400}
+                height={200}
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">

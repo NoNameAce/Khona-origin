@@ -1,7 +1,7 @@
-'use client'
 import { decodeUserToken } from "@/entities/auth/token";
 import { userPost } from "@/entities/property/service";
 import React, { useState } from "react";
+import Image from "next/image";
 
 export default function PostProperty() {
   const token = decodeUserToken();
@@ -94,11 +94,13 @@ export default function PostProperty() {
               className="w-full max-w-[300px] p-3 mt-2 border border-gray-300 rounded-lg"
               accept="image/*"
             />
-            {mainImage && (
-              <img
+            {mainImage && mainImage instanceof File && (
+              <Image
                 src={URL.createObjectURL(mainImage)}
                 alt="Main Image Preview"
-                className="mt-4 w-60 h-60 object-cover rounded-lg"
+                width={240}
+                height={240}
+                className="mt-4 object-cover rounded-lg"
               />
             )}
           </div>
@@ -112,11 +114,13 @@ export default function PostProperty() {
                 className="w-full max-w-[150px] p-3 mt-2 border border-gray-300 rounded-lg"
                 accept="image/*"
               />
-              {image1 && (
-                <img
+              {image1 && image1 instanceof File && (
+                <Image
                   src={URL.createObjectURL(image1)}
                   alt="Image 1 Preview"
-                  className="mt-4 w-40 h-40 object-cover rounded-lg"
+                  width={160}
+                  height={160}
+                  className="mt-4 object-cover rounded-lg"
                 />
               )}
             </div>
@@ -128,11 +132,13 @@ export default function PostProperty() {
                 className="w-full max-w-[150px] p-3 mt-2 border border-gray-300 rounded-lg"
                 accept="image/*"
               />
-              {image2 && (
-                <img
+              {image2 && image2 instanceof File && (
+                <Image
                   src={URL.createObjectURL(image2)}
                   alt="Image 2 Preview"
-                  className="mt-4 w-40 h-40 object-cover rounded-lg"
+                  width={160}
+                  height={160}
+                  className="mt-4 object-cover rounded-lg"
                 />
               )}
             </div>
@@ -144,11 +150,13 @@ export default function PostProperty() {
                 className="w-full max-w-[150px] p-3 mt-2 border border-gray-300 rounded-lg"
                 accept="image/*"
               />
-              {image3 && (
-                <img
+              {image3 && image3 instanceof File && (
+                <Image
                   src={URL.createObjectURL(image3)}
                   alt="Image 3 Preview"
-                  className="mt-4 w-40 h-40 object-cover rounded-lg"
+                  width={160}
+                  height={160}
+                  className="mt-4 object-cover rounded-lg"
                 />
               )}
             </div>

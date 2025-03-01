@@ -5,9 +5,27 @@ import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "jwt_secret";
 
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+  propertyAmpont: number;
+}
+
+interface LoginRequestBody {
+  email: string;
+  password: string;
+}
+
+interface Database {
+  data: User[];
+}
+
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const body: LoginRequestBody = await request.json();
     const { email, password } = body;
 
     if (!email || !password) {
@@ -16,11 +34,12 @@ export async function POST(request: Request) {
 
     const dbPath = path.join(process.cwd(), "db.json");
     const dbContent = fs.readFileSync(dbPath, "utf-8");
-    const dbData = JSON.parse(dbContent);
-    const users = dbData.data || [];
-    
 
-    const user = users.find((u: any) => u.email === email && u.password === password); 
+    // Explicitly typing the parsed dbContent as Database
+    const dbData: Database = JSON.parse(dbContent);
+    const users: User[] = dbData.data || [];
+
+    const user = users.find((u) => u.email === email && u.password === password);
     if (!user) {
       return NextResponse.json({ message: "Invalid credentials." }, { status: 401 });
     }
@@ -31,7 +50,9 @@ export async function POST(request: Request) {
       { expiresIn: "1h" }
     );
 
-    const { password: _, ...userWithoutPassword } = user;
+    // Explicitly marking the unused password as unused (to avoid TypeScript warning)
+    const { password: _unused, ...userWithoutPassword } = user;
+
     return NextResponse.json({ token, user: userWithoutPassword }, { status: 200 });
   } catch (error) {
     console.error("Login error:", error);

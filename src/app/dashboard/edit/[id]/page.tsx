@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getPropertyById, updateProperty } from "@/entities/property/service";
 import { Property } from "@/entities/property/model";
+import Image from 'next/image';
 
 export default function EditProperty() {
   const { id }: {id: string} = useParams();
@@ -111,10 +112,12 @@ export default function EditProperty() {
               accept="image/*"
             />
             {mainImage && (
-              <img
+              <Image
                 src={URL.createObjectURL(mainImage)}
                 alt="Main Image Preview"
-                className="mt-4 w-60 h-60 object-cover rounded-lg"
+                width={240}
+                height={240}
+                className="mt-4 object-cover rounded-lg"
               />
             )}
           </div>
@@ -127,10 +130,12 @@ export default function EditProperty() {
               accept="image/*"
             />
             {image1 && (
-              <img
+              <Image
                 src={URL.createObjectURL(image1)}
                 alt="Image 1 Preview"
-                className="mt-4 w-60 h-60 object-cover rounded-lg"
+                width={240}
+                height={240}
+                className="mt-4 object-cover rounded-lg"
               />
             )}
           </div>
@@ -144,10 +149,12 @@ export default function EditProperty() {
               accept="image/*"
             />
             {image2 && (
-              <img
+              <Image
                 src={URL.createObjectURL(image2)}
                 alt="Image 2 Preview"
-                className="mt-4 w-60 h-60 object-cover rounded-lg"
+                width={240}
+                height={240}
+                className="mt-4 object-cover rounded-lg"
               />
             )}
           </div>
@@ -161,10 +168,12 @@ export default function EditProperty() {
               accept="image/*"
             />
             {image3 && (
-              <img
+              <Image
                 src={URL.createObjectURL(image3)}
                 alt="Image 3 Preview"
-                className="mt-4 w-60 h-60 object-cover rounded-lg"
+                width={240}
+                height={240}
+                className="mt-4 object-cover rounded-lg"
               />
             )}
           </div>

@@ -1,32 +1,34 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import type React from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Home,
   Building,
   LogIn,
-  UserPlus,
   Info,
   Mail,
   FileText,
   Shield,
   User,
-} from "lucide-react"
-import { decodeUserToken } from "@/entities/auth/token"
-import { getProperty } from "@/entities/property/service"
+} from "lucide-react";
+import { decodeUserToken } from "@/entities/auth/token";
+
+interface DecodedUserToken {
+  role: string;
+}
 
 const Sidebar: React.FC = () => {
-  const [decoded, setDecoded] = useState<any>(null)
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
+  const [decoded, setDecoded] = useState<DecodedUserToken | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const token = decodeUserToken()
-    setDecoded(token)
-  }, [pathname])
+    const token = decodeUserToken();
+    setDecoded(token);
+  }, [pathname]);
 
   const baseRoutes = [
     { name: "Home", path: "/", icon: Home },
@@ -36,15 +38,15 @@ const Sidebar: React.FC = () => {
     { name: "Contact", path: "/contact", icon: Mail },
     { name: "Terms", path: "/terms", icon: FileText },
     { name: "Privacy", path: "/privacy", icon: Shield },
-  ]
+  ];
 
   const profileRoute = {
     name: "Profile",
     path: decoded?.role === "admin" ? "/admin/dashboard" : "/dashboard",
     icon: User,
-  }
+  };
 
-  const routes = [...baseRoutes, profileRoute]
+  const routes = [...baseRoutes, profileRoute];
 
   return (
     <>
@@ -79,7 +81,7 @@ const Sidebar: React.FC = () => {
         </nav>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

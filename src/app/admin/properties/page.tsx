@@ -1,5 +1,6 @@
 "use client";
 
+import { Property } from "@/entities/property/model";
 import { getProperty, deleteProperty } from "@/entities/property/service";
 import { Search, Edit, Trash2 } from "lucide-react";
 import Link from "next/link";
@@ -9,9 +10,9 @@ import { useState, useEffect } from "react";
 export default function AdminPropertiesPage() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
-  const [properties, setProperties] = useState<any[]>([]);
+  const [properties, setProperties] = useState<Property[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [propertyToDelete, setPropertyToDelete] = useState<any | null>(null);
+  const [propertyToDelete, setPropertyToDelete] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -29,7 +30,7 @@ export default function AdminPropertiesPage() {
   console.log(filteredProperties);
   
 
-  const handleDeleteClick = (property: any) => {
+  const handleDeleteClick = (property: Property) => {
     setPropertyToDelete(property.propertyId);
     setIsDialogOpen(true);
   };
@@ -115,11 +116,7 @@ export default function AdminPropertiesPage() {
                 <td className="px-6 py-4 whitespace-nowrap">
                   {property.location}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    {property.status}
-                  </span>
-                </td>
+                
                 <td className="px-6 py-4 whitespace-nowrap">
                   <Link
                     href={`/dashboard/edit/${property.propertyId}`}

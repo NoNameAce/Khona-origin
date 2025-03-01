@@ -1,9 +1,17 @@
 import Link from "next/link";
 import { getProperty } from "@/entities/property/service";
-import { Bookmark, Heart } from "lucide-react";
-import { Property } from "@/entities/property/model";
+import { Bookmark } from "lucide-react";
+import Image from "next/image";
 
 export default async function HomePage() {
+
+  type Property = {
+    propertyId: string;
+    name: string;
+    location: string;
+    price: number;
+    mainImage: string;
+  };
   const properties = await getProperty();
 
   const randomProperties = properties.sort(() => 0.5 - Math.random()).slice(0, 3);
@@ -31,9 +39,11 @@ export default async function HomePage() {
               key={property.propertyId}
               className="border rounded-lg overflow-hidden shadow-lg relative"
             >
-              <img
+              <Image
                 src={property.mainImage}
                 alt={`Property ${property.name}`}
+                width={500}
+                height={300}
                 className="w-full h-56 object-cover"
               />
 
@@ -63,20 +73,18 @@ export default async function HomePage() {
           Why Choose Us?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              title: "Wide Selection",
-              desc: "Browse through thousands of properties to find your perfect match.",
-            },
-            {
-              title: "Expert Advice",
-              desc: "Our team of real estate professionals is here to guide you every step of the way.",
-            },
-            {
-              title: "Secure Transactions",
-              desc: "Rest easy knowing that your property transactions are safe and secure.",
-            },
-          ].map((item, index) => (
+          {[{
+            title: "Wide Selection",
+            desc: "Browse through thousands of properties to find your perfect match.",
+          },
+          {
+            title: "Expert Advice",
+            desc: "Our team of real estate professionals is here to guide you every step of the way.",
+          },
+          {
+            title: "Secure Transactions",
+            desc: "Rest easy knowing that your property transactions are safe and secure.",
+          }].map((item, index) => (
             <div key={index} className="border rounded-lg p-6 shadow-md">
               <h3 className="font-semibold text-xl mb-2">{item.title}</h3>
               <p>{item.desc}</p>
@@ -90,22 +98,20 @@ export default async function HomePage() {
           What Our Clients Say
         </h2>
         <div className="max-w-3xl mx-auto space-y-6">
-          {[
-            {
-              name: "John Doe",
-              review: "Amazing service! Found my dream home within a week.",
-            },
-            {
-              name: "Sarah Smith",
-              review: "Highly professional and helpful team. Highly recommend!",
-            },
-            {
-              name: "Michael Lee",
-              review: "Smooth transaction and great customer support!",
-            },
-          ].map((testimonial, index) => (
+          {[{
+            name: "John Doe",
+            review: "Amazing service! Found my dream home within a week.",
+          },
+          {
+            name: "Sarah Smith",
+            review: "Highly professional and helpful team. Highly recommend!",
+          },
+          {
+            name: "Michael Lee",
+            review: "Smooth transaction and great customer support!",
+          }].map((testimonial, index) => (
             <div key={index} className="p-6 bg-white rounded-lg shadow-md">
-              <p className="italic">"{testimonial.review}"</p>
+              <p className="italic">&quot;{testimonial.review}&quot;</p>
               <h4 className="mt-4 font-semibold text-blue-500">
                 - {testimonial.name}
               </h4>

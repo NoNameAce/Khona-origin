@@ -1,4 +1,5 @@
 import axios from "axios";
+import { User } from "./model";
 
 const USER_API_URL = 'http://localhost:7000/users';
 
@@ -20,7 +21,7 @@ export async function deleteUser(id: string) {
   }
 }
 
-export async function updateUser(id: string, userData: any) {
+export async function updateUser(id: string, userData: User) {
   try {
     const { data } = await axios.put(`${USER_API_URL}/${id}`, userData);
     return data;
@@ -29,7 +30,7 @@ export async function updateUser(id: string, userData: any) {
   }
 }
 
-export async function createUser(userData: any) {
+export async function createUser(userData: User) {
   try {
     const { data } = await axios.post(USER_API_URL, userData);
     return data;

@@ -6,16 +6,23 @@ import { Search, Edit, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
+}
+
 export default function AdminUsersPage() {
-  const router = useRouter();
-  const [users, setUsers] = useState<any[]>([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [users, setUsers] = useState<User[]>([]); 
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   // State for dialogs and form
-  const [showEditDialog, setShowEditDialog] = useState(false);
-  const [showAddDialog, setShowAddDialog] = useState(false);
-  const [selectedUser, setSelectedUser] = useState<any>(null);
-  const [formData, setFormData] = useState({
+  const [showEditDialog, setShowEditDialog] = useState<boolean>(false);
+  const [showAddDialog, setShowAddDialog] = useState<boolean>(false);
+  const [_selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [formData, setFormData] = useState<User>({
     id: "",
     name: "",
     email: "",
@@ -38,7 +45,7 @@ export default function AdminUsersPage() {
     setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
   };
 
-  const handleEdit = (user: any) => {
+  const handleEdit = (user: User) => {
     setSelectedUser(user);
     setFormData(user);
     setShowEditDialog(true);

@@ -8,12 +8,18 @@ import { Users, Home, DollarSign, Activity, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+interface Property {
+  propertyId: string;
+  name: string;
+  price: number;
+  phone: string;
+}
+
 export default function AdminDashboardPage() {
   const router = useRouter();
   const [token, setToken] = useState<User | null>(null);
-
-  const [properties, setProperties] = useState<any[]>([]);
-  const [users, setUsers] = useState<any[]>([]);
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -21,11 +27,11 @@ export default function AdminDashboardPage() {
       setToken(token);
       console.log(token);
 
-      const propertyResult = await getProperty();
+      const propertyResult: Property[] = await getProperty();
       setProperties(propertyResult || []);
       console.log(propertyResult);
 
-      const userResult = await getUser();
+      const userResult: User[] = await getUser();
       setUsers(userResult || []);
     }
     fetchData();
@@ -41,7 +47,7 @@ export default function AdminDashboardPage() {
       <div className="flex items-center justify-between mb-6">
         <span></span>
         <button onClick={handleLogout} className="mr-0 flex gap-2 items-center cursor-pointer  text-red-700">
-          <LogOut className="" />
+          <LogOut />
           Logout
         </button>
       </div>
@@ -82,35 +88,23 @@ export default function AdminDashboardPage() {
         {/* Users Table */}
         <div>
           <div className="flex gap-4 items-center">
-            <h2 className="text-2xl font-bold mb-4">
-              Recent User Registrations
-            </h2>
+            <h2 className="text-2xl font-bold mb-4">Recent User Registrations</h2>
           </div>
           <div className="bg-white shadow rounded-lg overflow-hidden">
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Email
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Phone
-                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {users.slice(0, 6).map((user) => (
-                  <tr key={user.id || user._id}>
+                  <tr key={user.id}>
                     <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {user.email}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {user.phone}
-                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{user.phone}</td>
                   </tr>
                 ))}
               </tbody>
@@ -125,36 +119,25 @@ export default function AdminDashboardPage() {
             </button>
           </div>
         </div>
-        
+
+        {/* Properties Table */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Recent Property Listings</h2>
           <div className="bg-white shadow rounded-lg overflow-hidden">
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Property
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Price
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Phone
-                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Property</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {properties.slice(0, 6).map((property) => (
                   <tr key={property.propertyId}>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {property.name}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      ${property.price}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {property.phone}
-                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">{property.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">${property.price}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{property.phone}</td>
                   </tr>
                 ))}
               </tbody>

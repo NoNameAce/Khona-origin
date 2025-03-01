@@ -34,25 +34,32 @@ export default function Registration() {
 
     try {
       const response = await registerUser(userData);
-
+    
       if (!response || !response.token) {
         throw new Error("Invalid response from server.");
       }
-
+    
       localStorage.setItem("access_token", response.token);
-
+    
       setSuccessMessage("Registration successful! Redirecting...");
       console.log('success');
       
       setTimeout(() => {
         router.push("/login");
       }, 2000);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Registration error:", error);
-      setFormError(error.message || "Registration failed. Please try again.");
+    
+      if (error instanceof Error) {
+        setFormError(error.message || "Registration failed. Please try again.");
+      } else {
+        setFormError("An unknown error occurred. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
+    
+    
   };
 
   return (

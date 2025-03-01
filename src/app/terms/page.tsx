@@ -10,7 +10,7 @@ export default function TermsPage() {
         <h2 className="text-2xl font-bold mt-8 mb-4">1. Use of the Website</h2>
         <p>
           You agree to use this website for lawful purposes only and in a way that does not infringe the rights of,
-          restrict, or inhibit anyone else's use and enjoyment of the website.
+          restrict, or inhibit anyone else&apos;s use and enjoyment of the website.
         </p>
         <h2 className="text-2xl font-bold mt-8 mb-4">2. Intellectual Property</h2>
         <p>
@@ -52,4 +52,3 @@ export default function TermsPage() {
     </div>
   )
 }
-
