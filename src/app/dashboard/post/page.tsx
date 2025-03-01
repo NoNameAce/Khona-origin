@@ -1,3 +1,5 @@
+'use client'
+
 import { decodeUserToken } from "@/entities/auth/token";
 import { userPost } from "@/entities/property/service";
 import React, { useState } from "react";
