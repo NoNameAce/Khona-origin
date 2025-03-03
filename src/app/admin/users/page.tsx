@@ -1,3 +1,4 @@
+'use client'
 import { decodeUserToken } from "@/entities/auth/token";
 import { deleteUser, getUser, updateUser, createUser } from "@/entities/user/service";
 import { Search, Edit, Trash2 } from "lucide-react";

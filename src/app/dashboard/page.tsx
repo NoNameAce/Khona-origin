@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 import { decodeUserToken, logoutUser } from "@/entities/auth/token";
 import { getProperty } from "@/entities/property/service";
 import Link from "next/link";
