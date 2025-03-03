@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+// import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import jwt from "jsonwebtoken";
+import { NextResponse } from "next/server";
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
@@ -16,6 +17,7 @@ interface User {
 interface Database {
   data: User[];
 }
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -59,7 +61,8 @@ export async function POST(request: Request) {
       { expiresIn: "1h" }
     );
 
-    const { password: _unused, ...userWithoutPassword } = newUser;
+    // Fixed the issue
+    const { password: _, ...userWithoutPassword } = newUser;
 
     return NextResponse.json({ token, user: userWithoutPassword }, { status: 201 });
   } catch (error) {

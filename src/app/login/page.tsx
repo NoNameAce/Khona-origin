@@ -10,7 +10,11 @@ import { LoginSchema, loginSchema } from "@/entities/auth/models/login-schema";
 
 export default function Login() {
   const router = useRouter();
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginSchema>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
   const [formError, setFormError] = useState<string | null>(null);
@@ -52,7 +56,9 @@ export default function Login() {
             {...register("email")}
             className="w-full p-2 border rounded-md"
           />
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+          )}
         </div>
         <div>
           <label className="block font-medium mb-1">Password</label>
@@ -61,7 +67,11 @@ export default function Login() {
             {...register("password")}
             className="w-full p-2 border rounded-md"
           />
-          {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
+          {errors.password && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.password.message}
+            </p>
+          )}
         </div>
         <button
           type="submit"
@@ -71,9 +81,11 @@ export default function Login() {
           {isSubmitting ? "Signing In..." : "Sign In"}
         </button>
       </form>
-      {formError && <p className="text-red-500 text-sm mt-2 text-center">{formError}</p>}
+      {formError && (
+        <p className="text-red-500 text-sm mt-2 text-center">{formError}</p>
+      )}
       <p className="text-center mt-4">
-        Don't have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link href="/register" className="text-blue-500 hover:underline">
           Register here
         </Link>

@@ -35,7 +35,6 @@ export async function POST(request: Request) {
     const dbPath = path.join(process.cwd(), "db.json");
     const dbContent = fs.readFileSync(dbPath, "utf-8");
 
-    // Explicitly typing the parsed dbContent as Database
     const dbData: Database = JSON.parse(dbContent);
     const users: User[] = dbData.data || [];
 
@@ -44,14 +43,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "Invalid credentials." }, { status: 401 });
     }
 
+    const { password: _, ...userWithoutPassword } = user;
+
     const token = jwt.sign(
       { id: user.id, name: user.name, email: user.email, role: user.role, propertyAmpont: user.propertyAmpont },
       JWT_SECRET,
       { expiresIn: "1h" }
     );
-
-    // Explicitly marking the unused password as unused (to avoid TypeScript warning)
-    const { password: _unused, ...userWithoutPassword } = user;
 
     return NextResponse.json({ token, user: userWithoutPassword }, { status: 200 });
   } catch (error) {

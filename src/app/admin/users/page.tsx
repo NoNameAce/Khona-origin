@@ -1,9 +1,6 @@
-'use client'
-
 import { decodeUserToken } from "@/entities/auth/token";
 import { deleteUser, getUser, updateUser, createUser } from "@/entities/user/service";
 import { Search, Edit, Trash2 } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface User {
@@ -18,10 +15,8 @@ export default function AdminUsersPage() {
   const [users, setUsers] = useState<User[]>([]); 
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  // State for dialogs and form
   const [showEditDialog, setShowEditDialog] = useState<boolean>(false);
   const [showAddDialog, setShowAddDialog] = useState<boolean>(false);
-  const [_selectedUser, setSelectedUser] = useState<User | null>(null);
   const [formData, setFormData] = useState<User>({
     id: "",
     name: "",
@@ -46,13 +41,11 @@ export default function AdminUsersPage() {
   };
 
   const handleEdit = (user: User) => {
-    setSelectedUser(user);
     setFormData(user);
     setShowEditDialog(true);
   };
 
   const handleAdd = () => {
-    setSelectedUser(null);
     setFormData({ id: "", name: "", email: "", phone: "", role: "" });
     setShowAddDialog(true);
   };
@@ -249,7 +242,7 @@ export default function AdminUsersPage() {
                   Cancel
                 </button>
                 <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
-                  Add
+                  Save
                 </button>
               </div>
             </form>
