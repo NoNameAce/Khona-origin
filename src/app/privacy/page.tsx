@@ -1,63 +1,56 @@
 export default function PrivacyPage() {
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
+      <h1 className="text-3xl font-bold mb-6">Сиёсати Ҳифзи Махфият</h1>
       <div className="space-y-6">
         <p>
-          At Real Estate Marketplace, we are committed to protecting your privacy. This Privacy Policy explains how we
-          collect, use, and safeguard your personal information.
+          Дар Маркетплейси Молҳои Нерухӣ, мо ба муҳофизат кардани махфияти шумо ӯҳдадор ҳастем. Ин Сиёсати Ҳифзи Махфият шарҳ медиҳад, ки мо чӣ тавр маълумотҳои шахсии шуморо ҷамъ, истифода ва муҳофизат мекунем.
         </p>
-        <h2 className="text-2xl font-bold mt-8 mb-4">1. Information We Collect</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">1. Маълумоти Мо Ҷамъ Кунем</h2>
         <p>
-          We collect information you provide directly to us, such as when you create an account, list a property, or
-          contact us for support. This may include:
+          Мо маълумоте, ки шумо мустақиман ба мо медиҳед, ҷамъ мекунем, масалан, вақте ки шумо ҳисоби корӣ месозед, молро номбар мекунед ё барои дастгирӣ ба мо муроҷиат мекунед. Ин метавонад шомил бошад:
         </p>
         <ul className="list-disc list-inside ml-4">
-          <li>Name and contact information</li>
-          <li>Account credentials</li>
-          <li>Property details</li>
-          <li>Payment information</li>
+          <li>Ном ва маълумоти тамос</li>
+          <li>Аккредитивҳои ҳисоб</li>
+          <li>Тафсилоти мол</li>
+          <li>Маълумоти пардохт</li>
         </ul>
-        <h2 className="text-2xl font-bold mt-8 mb-4">2. How We Use Your Information</h2>
-        <p>We use the information we collect to:</p>
+        <h2 className="text-2xl font-bold mt-8 mb-4">2. Чӣ тавр Маълумотҳои Шумо Истифода мешаванд</h2>
+        <p>Мо маълумоти ҷамъоваришударо барои:</p>
         <ul className="list-disc list-inside ml-4">
-          <li>Provide, maintain, and improve our services</li>
-          <li>Process transactions and send related information</li>
-          <li>Send you technical notices, updates, security alerts, and support messages</li>
-          <li>Respond to your comments, questions, and customer service requests</li>
-          <li>Communicate with you about products, services, offers, and events</li>
+          <li>Таъмин, нигоҳдорӣ ва беҳтар кардани хидматҳои мо</li>
+          <li>Пурра кардани амалиётҳо ва фиристодани маълумотҳои марбут</li>
+          <li>Фиристодани хабарномаҳои техникӣ, навсозиҳо, огоҳии амниятӣ ва паёмҳои дастгирӣ</li>
+          <li>Ҷавоб додан ба шарҳҳо, саволҳо ва дархостҳои хидматрасонии мизоҷ</li>
+          <li>Муошират бо шумо дар бораи маҳсулотҳо, хидматҳо, пешниҳодҳо ва чорабиниҳо</li>
         </ul>
-        <h2 className="text-2xl font-bold mt-8 mb-4">3. Information Sharing and Disclosure</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">3. Шарикӣ ва Эълони Маълумотҳо</h2>
         <p>
-          We do not sell or rent your personal information to third parties. We may share your information in certain
-          circumstances, such as:
+          Мо маълумоти шахсии шуморо ба шахсони сеюм намефурӯшем ё намаҳз мебароем. Мо метавонем маълумоти шуморо дар шароити муайян бо шумо ба назар бигирем, ба монанди:
         </p>
         <ul className="list-disc list-inside ml-4">
-          <li>With your consent</li>
-          <li>To comply with legal obligations</li>
-          <li>To protect the rights and safety of our users and third parties</li>
-          <li>In connection with a business transfer or sale</li>
+          <li>Бо розигии шумо</li>
+          <li>Барои иҷрои ҳуқуқи қонунии мо</li>
+          <li>Барои муҳофизат кардани ҳуқуқҳо ва бехатарии истифодабарандагон ва шахсони сеюм</li>
+          <li>Дар робита бо интиқол ё фурӯши тиҷорат</li>
         </ul>
-        <h2 className="text-2xl font-bold mt-8 mb-4">4. Data Security</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">4. Амнияти Маълумот</h2>
         <p>
-          We take reasonable measures to help protect your personal information from loss, theft, misuse, unauthorized
-          access, disclosure, alteration, and destruction.
+          Мо тадбирҳои мантиқӣ барои муҳофизат кардани маълумоти шахсии шумо аз гум кардан, дуздӣ, истифодаи нодуруст, дастрасии ғайриқонунӣ, ошкорсозӣ, тағйирот ва нобудсозӣ мегирем.
         </p>
-        <h2 className="text-2xl font-bold mt-8 mb-4">5. Your Choices</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">5. Тафсилоти Шумо</h2>
         <p>
-          You can access, update, or delete your account information at any time by logging into your account or
-          contacting us. You may also opt-out of receiving promotional communications from us by following the
-          instructions in those messages.
+          Шумо метавонед ба маълумоти ҳисоби худ дастрасӣ пайдо кунед, навсозӣ кунед ё онро ҳар вақте, ки хоҳед, нест кунед, бо вуруд ба ҳисоби худ ё тавассути тамос бо мо. Шумо инчунин метавонед аз гирифтани хабарҳои таблиғотӣ хоруҷ кунед, бо пайравӣ кардани дастурҳо дар паёмҳои он.
         </p>
-        <h2 className="text-2xl font-bold mt-8 mb-4">6. Changes to This Privacy Policy</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">6. Таҳрири Ин Сиёсати Ҳифзи Махфият</h2>
         <p>
-          We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new
-          Privacy Policy on this page and updating the &quot;Last Updated&quot; date.
+          Мо метавонем ин Сиёсати Ҳифзи Махфиятро аз вақт ба вақт навсозӣ кунем. Мо ба шумо дар бораи ҳама гуна тағйиротҳо бо гузоштани Сиёсати Ҳифзи Махфият дар ин саҳифа ва навсозии санаи "Охирин Навсозӣ" хабар хоҳем дод.
         </p>
         <p className="mt-8">
-          If you have any questions about this Privacy Policy, please contact us at privacy@realestatemarketplace.com.
+          Агар шумо саволе дар бораи ин Сиёсати Ҳифзи Махфият дошта бошед, лутфан бо мо дар тамос шавед дар privacy@realestatemarketplace.com.
         </p>
-        <p>Last Updated: [Insert Date]</p>
+        <p>Охирин Навсозӣ: [Санаи Тафсилот]</p>
       </div>
     </div>
   )

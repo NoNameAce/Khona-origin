@@ -1,72 +1,52 @@
-// import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import jwt from "jsonwebtoken";
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
-const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
+dotenv.config();
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  phone: string;
-  role: string;
-}
-interface Database {
-  data: User[];
-}
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function POST(request: Request) {
+  if (!JWT_SECRET) {
+    console.error('JWT_SECRET is missing in environment variables');
+    return NextResponse.json(
+      { error: 'Server configuration error' },
+      { status: 500 }
+    );
+  }
+
   try {
-    const body = await request.json();
-    const { name, email, password, phone, confirmPassword } = body;
+    const { name, email, password, phone } = await request.json();
 
-    if (!name || !email || !password || !phone || !confirmPassword) {
-      return NextResponse.json({ message: "Missing required fields." }, { status: 400 });
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const backendResponse = await fetch('http://localhost:7000/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password: hashedPassword, phone }),
+    });
+
+    if (!backendResponse.ok) {
+      const errorText = await backendResponse.text();
+      throw new Error(errorText || 'Backend registration failed');
     }
 
-    if (password !== confirmPassword) {
-      return NextResponse.json({ message: "Passwords do not match." }, { status: 400 });
-    }
-
-    const dbPath = path.join(process.cwd(), "db.json");
-    const dbContent = fs.readFileSync(dbPath, "utf-8");
-
-    const dbData: Database = JSON.parse(dbContent);
-    const users: User[] = dbData.data || [];
-
-    const existingUser = users.find((u) => u.email === email);
-    if (existingUser) {
-      return NextResponse.json({ message: "Email already in use." }, { status: 400 });
-    }
-
-    const newUser = {
-      id: Date.now().toString(),
-      name,
-      email,
-      password,
-      phone,
-      role: "user",
-    };
-
-    users.push(newUser);
-    dbData.data = users;
-    fs.writeFileSync(dbPath, JSON.stringify(dbData, null, 2), "utf-8");
+    const { user } = await backendResponse.json();
 
     const token = jwt.sign(
-      { id: newUser.id, name, email, phone, role: newUser.role }, 
+      { id: user.id, email: user.email },
       JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: '7d' }
     );
 
-    // Fixed the issue
-    const { password: _, ...userWithoutPassword } = newUser;
+    return NextResponse.json({ token, user });
 
-    return NextResponse.json({ token, user: userWithoutPassword }, { status: 201 });
   } catch (error) {
-    console.error("Register error:", error);
-    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+    console.error('Registration error:', error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Registration failed' },
+      { status: 500 }
+    );
   }
 }

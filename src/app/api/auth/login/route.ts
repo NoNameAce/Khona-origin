@@ -1,59 +1,31 @@
-import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import jwt from "jsonwebtoken";
-
-const JWT_SECRET = process.env.JWT_SECRET || "jwt_secret";
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  role: string;
-  propertyAmpont: number;
-}
-
-interface LoginRequestBody {
-  email: string;
-  password: string;
-}
-
-interface Database {
-  data: User[];
-}
+// src/app/api/auth/login/route.ts
+import { NextResponse } from 'next/server';
+import { LoginCredentials } from '@/entities/auth/types';
+import { login } from '@/entities/auth/api';
 
 export async function POST(request: Request) {
   try {
-    const body: LoginRequestBody = await request.json();
-    const { email, password } = body;
+    const credentials: LoginCredentials = await request.json();
+    
 
-    if (!email || !password) {
-      return NextResponse.json({ message: "Email and password are required." }, { status: 400 });
+    if (!credentials.email || !credentials.password) {
+      return NextResponse.json(
+        { error: "Email and password are required" },
+        { status: 400 }
+      );
     }
 
-    const dbPath = path.join(process.cwd(), "db.json");
-    const dbContent = fs.readFileSync(dbPath, "utf-8");
-
-    const dbData: Database = JSON.parse(dbContent);
-    const users: User[] = dbData.data || [];
-
-    const user = users.find((u) => u.email === email && u.password === password);
-    if (!user) {
-      return NextResponse.json({ message: "Invalid credentials." }, { status: 401 });
-    }
-
-    const { password: _, ...userWithoutPassword } = user;
-
-    const token = jwt.sign(
-      { id: user.id, name: user.name, email: user.email, role: user.role, propertyAmpont: user.propertyAmpont },
-      JWT_SECRET,
-      { expiresIn: "1h" }
-    );
-
-    return NextResponse.json({ token, user: userWithoutPassword }, { status: 200 });
+    const { token, user } = await login(credentials);
+    console.log(NextResponse.json({ user, token }));
+    
+    
+    // Return token to be stored in localStorage
+    return NextResponse.json({ user, token });
+    
   } catch (error) {
-    console.error("Login error:", error);
-    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Login failed" },
+      { status: 401 }
+    );
   }
 }

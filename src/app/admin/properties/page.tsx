@@ -27,8 +27,6 @@ export default function AdminPropertiesPage() {
       property.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       property.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  console.log(filteredProperties);
-  
 
   const handleDeleteClick = (property: Property) => {
     setPropertyToDelete(property.propertyId);
@@ -57,13 +55,13 @@ export default function AdminPropertiesPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">Manage Properties</h1>
+      <h1 className="text-3xl font-bold mb-6">Идора кардани молу мулк</h1>
 
       <div className="mb-6 flex justify-between items-center">
         <div className="relative w-64">
           <input
             type="text"
-            placeholder="Search properties..."
+            placeholder="Ҷустуҷӯи молу мулк..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 pl-10"
@@ -75,7 +73,7 @@ export default function AdminPropertiesPage() {
           type="button"
           className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
         >
-          Add New Property
+          Иловаи молу мулки нав
         </button>
       </div>
 
@@ -84,22 +82,22 @@ export default function AdminPropertiesPage() {
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Property
+                Молу мулк
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Owner Email
+                Почтаи соҳиби молу мулк
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Price
+                Нарх
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Location
+                Ҷойгиршавӣ
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Status
+                Вазъият
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
+                Амалҳо
               </th>
             </tr>
           </thead>
@@ -116,14 +114,14 @@ export default function AdminPropertiesPage() {
                 <td className="px-6 py-4 whitespace-nowrap">
                   {property.location}
                 </td>
-                
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <Link
-                    href={`/dashboard/edit/${property.propertyId}`}
-                  >
+                  {/* Вазъият – бояд дар оянда илова шавад */}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <Link href={`/dashboard/edit/${property.propertyId}`}>
                     <button className="text-blue-600 hover:underline mr-2">
                       <Edit className="inline mr-1" />
-                      Edit
+                      Тағйир додан
                     </button>
                   </Link>
                   <button
@@ -131,7 +129,7 @@ export default function AdminPropertiesPage() {
                     className="text-red-600 hover:underline"
                   >
                     <Trash2 className="inline mr-1" />
-                    Delete
+                    Ҳазф кардан
                   </button>
                 </td>
               </tr>
@@ -144,20 +142,20 @@ export default function AdminPropertiesPage() {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg max-w-sm w-full">
             <h2 className="text-xl font-semibold mb-4">
-              Are you sure you want to delete this property?
+              Шумо мутмаин ҳастед, ки мехоҳед ин молу мулкро ҳазф кунед?
             </h2>
             <div className="flex justify-end space-x-4">
               <button
                 onClick={handleDeleteCancel}
                 className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
               >
-                Cancel
+                Бекор кардан
               </button>
               <button
                 onClick={handleDeleteConfirm}
                 className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
               >
-                Confirm
+                Тасдиқ кардан
               </button>
             </div>
           </div>

@@ -1,52 +1,41 @@
 export default function TermsPage() {
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Terms and Conditions</h1>
+      <h1 className="text-3xl font-bold mb-6">Шартҳо ва Шартҳои истифода</h1>
       <div className="space-y-6">
         <p>
-          Welcome to Real Estate Marketplace. By accessing and using this website, you agree to comply with and be bound
-          by the following terms and conditions.
+          Хуш омадед ба Маркетплейс амволи нусха. Бо дастрасӣ ва истифодаи ин вебсайт, шумо розӣ мешавед, ки ба шартҳо ва шартҳои зерин риоя кунед ва ба онҳо бояд.
         </p>
-        <h2 className="text-2xl font-bold mt-8 mb-4">1. Use of the Website</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">1. Истифодаи вебсайт</h2>
         <p>
-          You agree to use this website for lawful purposes only and in a way that does not infringe the rights of,
-          restrict, or inhibit anyone else&apos;s use and enjoyment of the website.
+          Шумо розӣ мешавед, ки вебсайтро танҳо барои мақсадҳои қонунии истифода баред ва ба тавре, ки ҳуқуқҳои дигаронро маҳдуд накунад ё аз истифода ва лаззат бурдани вебсайт монеа наорад.
         </p>
-        <h2 className="text-2xl font-bold mt-8 mb-4">2. Intellectual Property</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">2. Моли интеллектуалӣ</h2>
         <p>
-          All content on this website, including but not limited to text, graphics, logos, images, and software, is the
-          property of Real Estate Marketplace and is protected by copyright laws.
+          Ҳамаи мундариҷа дар ин вебсайт, аз ҷумла, аммо на маҳдуд ба матн, графика, логотипҳо, тасвирҳо ва нармафзор, моликияти Маркетплейс амволи нусха мебошад ва бо қонунҳои ҳуқуқи муаллиф муҳофизат мешавад.
         </p>
-        <h2 className="text-2xl font-bold mt-8 mb-4">3. Liability</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">3. Масъулият</h2>
         <p>
-          Real Estate Marketplace makes every effort to ensure the accuracy of the information on this website but
-          cannot guarantee its completeness or correctness. We shall not be liable for any loss or damage arising from
-          the use of this website.
+          Маркетплейс амволи нусха кӯшиш мекунад, ки дурустии маълумот дар вебсайтро таъмин кунад, аммо наметавонад дурустии ё комилиятро кафолат диҳад. Мо барои хисорот ё зиёнҳои ба амал омада аз истифодаи ин вебсайт масъул нестем.
         </p>
-        <h2 className="text-2xl font-bold mt-8 mb-4">4. User Accounts</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">4. Ҳисобҳои истифодабаранда</h2>
         <p>
-          When you create an account with us, you must provide information that is accurate, complete, and current at
-          all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of
-          your account on our Service.
+          Вақте, ки шумо бо мо ҳисоб эҷод мекунед, шумо бояд маълумоте, ки дуруст, пурра ва актуалӣ аст, фароҳам оред. Нокифоя будан дар ин масъала метавонад сабаби бас кардани фаврии ҳисоб дар хидматрасонии мо гардад.
         </p>
-        <h2 className="text-2xl font-bold mt-8 mb-4">5. Privacy</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">5. Ҳифзи махфият</h2>
         <p>
-          Your use of the Real Estate Marketplace is also governed by our Privacy Policy. Please review our Privacy
-          Policy, which also governs the Site and informs users of our data collection practices.
+          Истифодаи шумо аз Маркетплейс амволи нусха инчунин бо сиёсати махфияти мо таҳти назорат аст. Лутфан сиёсати махфияти моро, ки инчунин барои вебсайт истифода мешавад ва ба корбарон огоҳии пурра дар бораи раванди ҷамъоварии маълумот медиҳад, бо диққат хонед.
         </p>
-        <h2 className="text-2xl font-bold mt-8 mb-4">6. Governing Law</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">6. Қонунгузорӣ</h2>
         <p>
-          These Terms shall be governed and construed in accordance with the laws of [Your Country/State], without
-          regard to its conflict of law provisions.
+          Ин шартҳо ба таври пурра ва мувофиқи қонунҳои [Кишвар/Мақомоти шумо] таҳти назорат ва тафсир мешаванд, бидуни монеаҳо дар ҳолатҳои муноқишаҳои ҳуқуқӣ.
         </p>
-        <h2 className="text-2xl font-bold mt-8 mb-4">7. Changes to Terms</h2>
+        <h2 className="text-2xl font-bold mt-8 mb-4">7. Тағйироти шартҳо</h2>
         <p>
-          We reserve the right, at our sole discretion, to modify or replace these Terms at any time. What constitutes a
-          material change will be determined at our sole discretion.
+          Мо ҳақ дорем, ки дар ҳар вақти дилхоҳ шартҳоро тағйир диҳем ё иваз кунем. Ба чӣ гуна тағйирот мавриди таваҷҷӯҳ қарор мегирад, моро танҳо дастрас мекунем.
         </p>
         <p className="mt-8">
-          By using this website, you signify your acceptance of these Terms and Conditions. If you do not agree to these
-          Terms and Conditions, please do not use our website.
+          Бо истифода аз ин вебсайт, шумо ба қабул кардани ин Шартҳо ва Шартҳо розӣ мешавед. Агар шумо бо ин шартҳо розӣ набошед, лутфан вебсайтро истифода набаред.
         </p>
       </div>
     </div>

@@ -1,4 +1,5 @@
-'use client'
+"use client";
+
 import { decodeUserToken, logoutUser } from "@/entities/auth/token";
 import { getProperty } from "@/entities/property/service";
 import Link from "next/link";
@@ -26,7 +27,7 @@ export default function DashboardPage() {
     const decoded = decodeUserToken();
 
     if (!decoded) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     setUserName(decoded.name || "");
@@ -40,7 +41,7 @@ export default function DashboardPage() {
 
   const handleLogout = async () => {
     await logoutUser();
-    router.push("/login");
+    router.push("/auth/login");
   };
 
   return (

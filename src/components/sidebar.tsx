@@ -13,6 +13,8 @@ import {
   FileText,
   Shield,
   User,
+  PanelLeftOpen,
+  PanelRightOpen,
 } from "lucide-react";
 import { decodeUserToken } from "@/entities/auth/token";
 
@@ -31,17 +33,17 @@ const Sidebar: React.FC = () => {
   }, [pathname]);
 
   const baseRoutes = [
-    { name: "Home", path: "/", icon: Home },
-    { name: "Properties", path: "/properties", icon: Building },
-    { name: "Login", path: "/login", icon: LogIn },
-    { name: "About", path: "/about", icon: Info },
-    { name: "Contact", path: "/contact", icon: Mail },
-    { name: "Terms", path: "/terms", icon: FileText },
-    { name: "Privacy", path: "/privacy", icon: Shield },
+    { name: "Саҳифаи хона", path: "/", icon: Home },
+    { name: "Молҳо", path: "/properties", icon: Building },
+    { name: "Вуруд", path: "/login", icon: LogIn },
+    { name: "Дар бораи мо", path: "/about", icon: Info },
+    { name: "Контакт", path: "/contact", icon: Mail },
+    { name: "Шартҳо", path: "/terms", icon: FileText },
+    { name: "Махфият", path: "/privacy", icon: Shield },
   ];
 
   const profileRoute = {
-    name: "Profile",
+    name: "Профил",
     path: decoded?.role === "admin" ? "/admin/dashboard" : "/dashboard",
     icon: User,
   };
@@ -54,7 +56,7 @@ const Sidebar: React.FC = () => {
         className="fixed top-4 left-4 z-50 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? "Close" : "Open"} Menu
+        {isOpen ? <PanelRightOpen /> : <PanelLeftOpen />} 
       </button>
       <div
         className={`fixed pt-10 left-0 h-full w-64 bg-white shadow-lg transform ${

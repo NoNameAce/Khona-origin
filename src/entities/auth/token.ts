@@ -1,22 +1,40 @@
+// src/entities/auth/token.ts
 import { jwtDecode } from 'jwt-decode';
 import { User } from '../user/model';
 
+// Store token after login/register
+export function storeToken(token: string): void {
+  if (typeof window === 'undefined') return;
+  localStorage.setItem('access_token', token);
+}
 
+// Retrieve raw token
+export function getToken(): string | null {
+  if (typeof window === 'undefined') return null;
+  return localStorage.getItem('access_token');
+}
 
+// Decode token to get user info
 export function decodeUserToken(): User | null {
-  if (typeof window === "undefined") return null;
-  const token = localStorage.getItem("access_token");
-  if (!token) return null;
+  const token = getToken();
+  if (!token) return null; 
+  
   try {
-    const decoded = jwtDecode<User>(token);
-    return decoded;
+    return jwtDecode<User>(token);
   } catch (error) {
-    console.error("Failed to decode token:", error);
+    console.error('Failed to decode token:', error);
     return null;
   }
 }
 
-export function logoutUser() {
-  if (typeof window === "undefined") return;
-  localStorage.removeItem("access_token");
+// Remove token on logout
+export function logoutUser(): void {
+  if (typeof window === 'undefined') return;
+  localStorage.removeItem('access_token');
+}
+
+// Check if token exists and is valid
+export function isAuthenticated(): boolean {
+  const user = decodeUserToken();
+  return !!user; // Add expiration check if needed
 }

@@ -16,7 +16,6 @@ export default function PropertiesPage() {
   const [propertyType, setPropertyType] = useState("");
   const [price, setPrice] = useState("");
 
-
   useEffect(() => {
     async function fetchData() {
       const properties = await getProperty();
@@ -26,7 +25,7 @@ export default function PropertiesPage() {
   }, []);
 
   const filteredProperties = data.filter((prop) => {
-    const numPrice: number = Number(prop.price)
+    const numPrice: number = Number(prop.price);
     return (
       (location ? prop.location.toLowerCase().includes(location.toLowerCase()) : true) &&
       (propertyType ? prop.type === propertyType : true) &&
@@ -49,11 +48,11 @@ export default function PropertiesPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">All Properties</h1>
+      <h1 className="text-3xl font-bold mb-6">Ҳамаи Молҳо</h1>
 
       <div className="mb-8 grid grid-cols-1 md:grid-cols-4 gap-4">
         <input
-          placeholder="Location"
+          placeholder="Ҷойгиршавӣ"
           className="p-2 border rounded"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
@@ -63,13 +62,13 @@ export default function PropertiesPage() {
           value={propertyType}
           onChange={(e) => setPropertyType(e.target.value)}
         >
-          <option value="">Property Type</option>
-          <option value="house">House</option>
-          <option value="apartment">Apartment</option>
-          <option value="rent">Rent</option>
+          <option value="">Навъи Мол</option>
+          <option value="house">Хона</option>
+          <option value="apartment">Апартамент</option>
+          <option value="rent">Иҷора</option>
         </select>
         <input
-          placeholder="$ Set the Price"
+          placeholder="$ Танзими Нарх"
           className="p-2 border rounded"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -78,7 +77,7 @@ export default function PropertiesPage() {
           onClick={() => setCurrentPage(1)}
           className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors"
         >
-          Search
+          Ҷустуҷӯ
         </button>
       </div>
 
@@ -114,7 +113,7 @@ export default function PropertiesPage() {
               </p>
               <Link href={`/properties/${prop.propertyId}`}>
                 <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
-                  View Details
+                  Дидани Тафсилот
                 </button>
               </Link>
             </div>

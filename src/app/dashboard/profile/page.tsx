@@ -11,12 +11,12 @@ import * as z from "zod";
 const profileFormSchema = z.object({
   username: z
     .string()
-    .min(2, { message: "Username must be at least 2 characters." })
-    .max(30, { message: "Username must not be longer than 30 characters." }),
+    .min(2, { message: "Номуи корбар бояд на камтар аз 2 харф бошад." })
+    .max(30, { message: "Номуи корбар наметавонад аз 30 харф бештар бошад." }),
   email: z
-    .string({ required_error: "Please select an email to display." })
-    .email("Invalid email"),
-  bio: z.string().max(160).min(4, "Bio must be at least 4 characters."),
+    .string({ required_error: "Лутфан як почтаи электрониро интихоб кунед." })
+    .email("Почтаи электронӣ нодуруст аст"),
+  bio: z.string().max(160).min(4, "Биография бояд на камтар аз 4 харф бошад."),
 });
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
@@ -29,7 +29,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const decoded = decodeUserToken();
     if (!decoded) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
     setUserName(decoded.name || "");
@@ -42,7 +42,7 @@ export default function ProfilePage() {
     defaultValues: {
       username: userName,
       email: userEmail,
-      bio: "I am a real estate enthusiast.",
+      bio: "Ман як мухлиси амволи ғайриманқул ҳастам.",
     },
   });
 
@@ -50,35 +50,35 @@ export default function ProfilePage() {
     form.reset({
       username: userName,
       email: userEmail,
-      bio: "I am a real estate enthusiast.",
+      bio: "Ман як мухлиси амволи ғайриманқул ҳастам.",
     });
   }, [userName, userEmail, form]);
 
   function onSubmit(data: ProfileFormValues) {
-    console.log("Profile form submitted:", data);
+    console.log("Формаи профил фиристода шуд:", data);
   }
 
   function handleLogout() {
     logoutUser();
-    router.push("/login");
+    router.push("/auth/login");
   }
 
   return (
     <div className="max-w-md mx-auto mt-10">
       <div className="bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-bold mb-4">Profile</h2>
-        <p className="text-gray-600 mb-6">This is how others will see you on the site.</p>
+        <h2 className="text-2xl font-bold mb-4">Профил</h2>
+        <p className="text-gray-600 mb-6">Ин тарзи нишон додани шумо дар сайт аст.</p>
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-              Username
+              Номуи корбар
             </label>
             <input
               {...form.register("username")}
               id="username"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              placeholder="Enter your username"
+              placeholder="Номуи корбари худро ворид кунед"
             />
             {form.formState.errors.username && (
               <p className="mt-1 text-sm text-red-600">
@@ -89,14 +89,14 @@ export default function ProfilePage() {
 
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
+              Почта
             </label>
             <input
               {...form.register("email")}
               id="email"
               type="email"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              placeholder="Enter your email"
+              placeholder="Почтаи худро ворид кунед"
             />
             {form.formState.errors.email && (
               <p className="mt-1 text-sm text-red-600">
@@ -107,14 +107,14 @@ export default function ProfilePage() {
 
           <div>
             <label htmlFor="bio" className="block text-sm font-medium text-gray-700">
-              Bio
+              Биография
             </label>
             <textarea
               {...form.register("bio")}
               id="bio"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               rows={3}
-              placeholder="Tell us a little bit about yourself"
+              placeholder="Маъзаратонро каме дар бораи худ ба мо бигӯед"
             />
             {form.formState.errors.bio && (
               <p className="mt-1 text-sm text-red-600">
@@ -127,7 +127,7 @@ export default function ProfilePage() {
             type="submit"
             className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors"
           >
-            Update profile
+            Бафарини профилро навсозӣ кунед
           </button>
         </form>
 
@@ -135,7 +135,7 @@ export default function ProfilePage() {
           onClick={handleLogout}
           className="mt-4 w-full bg-red-500 text-white p-2 rounded hover:bg-red-600 transition-colors"
         >
-          Logout
+          Баромад
         </button>
       </div>
     </div>

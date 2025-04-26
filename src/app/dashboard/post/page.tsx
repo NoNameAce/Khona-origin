@@ -84,12 +84,12 @@ export default function PostProperty() {
   return (
     <div className="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-10">
       <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">
-        Post a New Property
+        Намоиш кардани хонаводаи нав
       </h1>
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-6">
           <div className="flex flex-col items-center">
-            <label className="block text-lg font-medium text-gray-700">Main Image:</label>
+            <label className="block text-lg font-medium text-gray-700">Сурати асосӣ:</label>
             <input
               type="file"
               onChange={(e) => handleImageChange(e, setMainImage)}
@@ -109,7 +109,7 @@ export default function PostProperty() {
 
           <div className="flex space-x-4">
             <div className="flex flex-col items-center">
-              <label className="block text-lg font-medium text-gray-700">Image 1:</label>
+              <label className="block text-lg font-medium text-gray-700">Сурати 1:</label>
               <input
                 type="file"
                 onChange={(e) => handleImageChange(e, setImage1)}
@@ -127,7 +127,7 @@ export default function PostProperty() {
               )}
             </div>
             <div className="flex flex-col items-center">
-              <label className="block text-lg font-medium text-gray-700">Image 2:</label>
+              <label className="block text-lg font-medium text-gray-700">Сурати 2:</label>
               <input
                 type="file"
                 onChange={(e) => handleImageChange(e, setImage2)}
@@ -145,7 +145,7 @@ export default function PostProperty() {
               )}
             </div>
             <div className="flex flex-col items-center">
-              <label className="block text-lg font-medium text-gray-700">Image 3:</label>
+              <label className="block text-lg font-medium text-gray-700">Сурати 3:</label>
               <input
                 type="file"
                 onChange={(e) => handleImageChange(e, setImage3)}
@@ -167,7 +167,7 @@ export default function PostProperty() {
 
         <div className="space-y-6">
           <div>
-            <label className="block text-lg font-medium text-gray-700">Property Name:</label>
+            <label className="block text-lg font-medium text-gray-700">Номии хонаи:</label>
             <input
               type="text"
               value={name}
@@ -177,7 +177,7 @@ export default function PostProperty() {
             />
           </div>
           <div>
-            <label className="block text-lg font-medium text-gray-700">Price:</label>
+            <label className="block text-lg font-medium text-gray-700">Нарх:</label>
             <input
               type="text"
               value={price}
@@ -187,7 +187,7 @@ export default function PostProperty() {
             />
           </div>
           <div>
-            <label className="block text-lg font-medium text-gray-700">Location:</label>
+            <label className="block text-lg font-medium text-gray-700">Ҷойгиршавӣ:</label>
             <input
               type="text"
               value={location}
@@ -197,7 +197,7 @@ export default function PostProperty() {
             />
           </div>
           <div>
-            <label className="block text-lg font-medium text-gray-700">Description:</label>
+            <label className="block text-lg font-medium text-gray-700">Тавсиф:</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -206,7 +206,7 @@ export default function PostProperty() {
             />
           </div>
           <div>
-            <label className="block text-lg font-medium text-gray-700">Phone:</label>
+            <label className="block text-lg font-medium text-gray-700">Телефон:</label>
             <input
               type="text"
               value={phone}
@@ -216,7 +216,7 @@ export default function PostProperty() {
             />
           </div>
           <div>
-            <label className="block text-lg font-medium text-gray-700">Email:</label>
+            <label className="block text-lg font-medium text-gray-700">Электронӣ:</label>
             <input
               type="email"
               value={email}
@@ -226,16 +226,16 @@ export default function PostProperty() {
             />
           </div>
           <div>
-            <label className="block text-lg font-medium text-gray-700">Property Type:</label>
+            <label className="block text-lg font-medium text-gray-700">Навъи хонаи:</label>
             <select
               className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
               onChange={(e) => setType(e.target.value)}
               value={type}
             >
-              <option value="">Select type</option>
-              <option value="hause">Hause</option>
-              <option value="apartment">Apartment</option>
-              <option value="rent">Rent</option>
+              <option value="">Навъро интихоб кунед</option>
+              <option value="hause">Хона</option>
+              <option value="apartment">Апартамент</option>
+              <option value="rent">Кира</option>
             </select>
           </div>
           <div className="flex justify-center">
@@ -243,7 +243,7 @@ export default function PostProperty() {
               type="submit"
               className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-              Post Property
+              Хонаи навро намоиш диҳед
             </button>
           </div>
         </div>

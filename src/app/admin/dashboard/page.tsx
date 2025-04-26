@@ -46,39 +46,39 @@ export default function AdminDashboardPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <span></span>
-        <button onClick={handleLogout} className="mr-0 flex gap-2 items-center cursor-pointer  text-red-700">
+        <button onClick={handleLogout} className="mr-0 flex gap-2 items-center cursor-pointer text-red-700">
           <LogOut />
-          Logout
+          Баромадан
         </button>
       </div>
-      <h1 className="text-3xl font-bold mb-6">Welcome {token?.name} (Admin)</h1>
+      <h1 className="text-3xl font-bold mb-6">Хуш омадед {token?.name} (Админ)</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div className="bg-blue-100 p-6 rounded-lg">
           <h3 className="text-xl font-semibold mb-2 flex items-center">
             <Users className="mr-2" />
-            Total Users
+            Шумораи умумии истифодабарандагон
           </h3>
           <p className="text-3xl font-bold">{users.length}</p>
         </div>
         <div className="bg-green-100 p-6 rounded-lg">
           <h3 className="text-xl font-semibold mb-2 flex items-center">
             <Home className="mr-2" />
-            Total Properties
+            Шумораи умумии амвол
           </h3>
           <p className="text-3xl font-bold">{properties.length}</p>
         </div>
         <div className="bg-yellow-100 p-6 rounded-lg">
           <h3 className="text-xl font-semibold mb-2 flex items-center">
             <DollarSign className="mr-2" />
-            Total Revenue
+            Даромади умумӣ
           </h3>
           <p className="text-3xl font-bold">$0</p>
         </div>
         <div className="bg-purple-100 p-6 rounded-lg">
           <h3 className="text-xl font-semibold mb-2 flex items-center">
             <Activity className="mr-2" />
-            Active Listings
+            Эълонҳои фаъол
           </h3>
           <p className="text-3xl font-bold">0</p>
         </div>
@@ -88,15 +88,15 @@ export default function AdminDashboardPage() {
         {/* Users Table */}
         <div>
           <div className="flex gap-4 items-center">
-            <h2 className="text-2xl font-bold mb-4">Recent User Registrations</h2>
+            <h2 className="text-2xl font-bold mb-4">Бақайдгирии охирини истифодабарандагон</h2>
           </div>
           <div className="bg-white shadow rounded-lg overflow-hidden">
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ном</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Почтаи электронӣ</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Рақами телефон</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -115,21 +115,21 @@ export default function AdminDashboardPage() {
               onClick={() => router.push("/admin/users")}
               className="bg-green-500 hover:bg-white text-white hover:text-green-500 border border-green-500 py-1 px-2 rounded transition duration-300"
             >
-              See all users
+              Дидани ҳамаи истифодабарандагон
             </button>
           </div>
         </div>
 
         {/* Properties Table */}
         <div>
-          <h2 className="text-2xl font-bold mb-4">Recent Property Listings</h2>
+          <h2 className="text-2xl font-bold mb-4">Эълонҳои охирини амвол</h2>
           <div className="bg-white shadow rounded-lg overflow-hidden">
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Property</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Амвол</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Нарх</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Рақами телефон</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -148,7 +148,7 @@ export default function AdminDashboardPage() {
               onClick={() => router.push("/admin/properties")}
               className="bg-green-500 hover:bg-white text-white hover:text-green-500 border border-green-500 py-1 px-2 rounded transition duration-300"
             >
-              See all properties
+              Дидани ҳамаи амволҳо
             </button>
           </div>
         </div>

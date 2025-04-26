@@ -73,16 +73,16 @@ export default function MyPropertiesPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">My Properties</h1>
+        <h1 className="text-3xl font-bold">Мошинҳои ман</h1>
         <Link href="/dashboard/post">
           <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
-            Add New Property
+            Мошин нави гузоштан
           </button>
         </Link>
       </div>
 
       {userProperties.length === 0 ? (
-        <p>You have no posts yet.</p>
+        <p>Шумо ҳеҷ посте надоред.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {userProperties.map((prop) => (
@@ -102,14 +102,14 @@ export default function MyPropertiesPage() {
                 <div className="flex justify-end space-x-2">
                   <Link href={`/dashboard/edit/${prop.propertyId}`}>
                     <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
-                      Edit
+                      Вироиш
                     </button>
                   </Link>
                   <button
                     onClick={() => handleDeleteClick(prop)}
                     className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
                   >
-                    Delete
+                    Устона кардан
                   </button>
                 </div>
               </div>
@@ -121,19 +121,19 @@ export default function MyPropertiesPage() {
       {isDialogOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg max-w-sm w-full">
-            <h2 className="text-xl font-semibold mb-4">Are you sure you want to delete this property?</h2>
+            <h2 className="text-xl font-semibold mb-4">Оё шумо воқеан мехоҳед ин молро устона кунед?</h2>
             <div className="flex justify-end space-x-4">
               <button
                 onClick={handleDeleteCancel}
                 className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
               >
-                Cancel
+                Кансел кардан
               </button>
               <button
                 onClick={handleDeleteConfirm}
                 className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
               >
-                Confirm
+                Тасдиқ
               </button>
             </div>
           </div>

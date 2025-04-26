@@ -99,12 +99,12 @@ export default function EditProperty() {
   return (
     <div className="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-10">
       <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">
-        Edit Property
+        Таҳрири Мол
       </h1>
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-6">
           <div className="flex flex-col items-center">
-            <label className="block text-lg font-medium text-gray-700">Main Image:</label>
+            <label className="block text-lg font-medium text-gray-700">Тасвири асосӣ:</label>
             <input
               type="file"
               onChange={(e) => handleImageChange(e, setMainImage)}
@@ -122,7 +122,7 @@ export default function EditProperty() {
             )}
           </div>
           <div className="flex flex-col items-center">
-            <label className="block text-lg font-medium text-gray-700">Image 1:</label>
+            <label className="block text-lg font-medium text-gray-700">Тасвири 1:</label>
             <input
               type="file"
               onChange={(e) => handleImageChange(e, setImage1)}
@@ -141,7 +141,7 @@ export default function EditProperty() {
           </div>
 
           <div className="flex flex-col items-center">
-            <label className="block text-lg font-medium text-gray-700">Image 2:</label>
+            <label className="block text-lg font-medium text-gray-700">Тасвири 2:</label>
             <input
               type="file"
               onChange={(e) => handleImageChange(e, setImage2)}
@@ -160,7 +160,7 @@ export default function EditProperty() {
           </div>
 
           <div className="flex flex-col items-center">
-            <label className="block text-lg font-medium text-gray-700">Image 3:</label>
+            <label className="block text-lg font-medium text-gray-700">Тасвири 3:</label>
             <input
               type="file"
               onChange={(e) => handleImageChange(e, setImage3)}
@@ -181,7 +181,7 @@ export default function EditProperty() {
 
         <div className="space-y-6">
           <div>
-            <label className="block text-lg font-medium text-gray-700">Property Name:</label>
+            <label className="block text-lg font-medium text-gray-700">Номи мол:</label>
             <input
               type="text"
               value={name}
@@ -192,7 +192,7 @@ export default function EditProperty() {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">Price:</label>
+            <label className="block text-lg font-medium text-gray-700">Нарх:</label>
             <input
               type="text"
               value={price}
@@ -203,7 +203,7 @@ export default function EditProperty() {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">Location:</label>
+            <label className="block text-lg font-medium text-gray-700">Макон:</label>
             <input
               type="text"
               value={location}
@@ -214,7 +214,7 @@ export default function EditProperty() {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">Description:</label>
+            <label className="block text-lg font-medium text-gray-700">Тавсиф:</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -224,7 +224,7 @@ export default function EditProperty() {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">Phone:</label>
+            <label className="block text-lg font-medium text-gray-700">Телефон:</label>
             <input
               type="text"
               value={phone}
@@ -235,7 +235,7 @@ export default function EditProperty() {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">Email:</label>
+            <label className="block text-lg font-medium text-gray-700">Почта:</label>
             <input
               type="email"
               value={email}
@@ -246,25 +246,25 @@ export default function EditProperty() {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">Property Type:</label>
+            <label className="block text-lg font-medium text-gray-700">Навъи мол:</label>
             <select
               value={type}
               onChange={(e) => setType(e.target.value)}
               className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
               required
             >
-              <option value="apartment">Apartment</option>
-              <option value="house">House</option>
-              <option value="office">Office</option>
+              <option value="apartment">Апартамент</option>
+              <option value="house">Хона</option>
+              <option value="office">Офис</option>
             </select>
           </div>
 
           <div className="flex justify-center">
             <button
               type="submit"
-              className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="px-8 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
             >
-              Save Changes
+              Муҳаррик кардани мол
             </button>
           </div>
         </div>

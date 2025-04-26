@@ -1,4 +1,4 @@
-import ImageGallery from "@/components/image-gallery";
+import ImageGallery from "@/components/image-gallery"; 
 import { getPropertyById } from "@/entities/property/service";
 import { DollarSign, Mail, MapPin, Phone } from "lucide-react";
 
@@ -8,7 +8,6 @@ export default async function PropertyDetailsPage({
   params: { id: string };
 }) {
   const { id } = await params;
-  
 
   const property = await getPropertyById(id);
 
@@ -29,7 +28,7 @@ export default async function PropertyDetailsPage({
 
         <div className="border rounded-lg p-6 flex flex-col h-full">
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Property Details</h2>
+            <h2 className="text-2xl font-semibold mb-4">Тафсилоти Мол</h2>
 
             <p className="flex items-center gap-2 text-2xl font-bold mb-2">
               <DollarSign className="w-5 h-5 text-green-500" /> ${property.price}
@@ -42,23 +41,23 @@ export default async function PropertyDetailsPage({
             <p className="mb-4">{property.description}</p>
 
             <div className="mt-6 border-t pt-4">
-              <h3 className="text-xl font-semibold mb-2">Contact Information</h3>
+              <h3 className="text-xl font-semibold mb-2">Маълумоти Мусоидат</h3>
 
               <p className="flex items-center gap-2 mb-1">
                 <Phone className="w-5 h-5 text-blue-500" />
-                <strong>Phone:</strong> {property.phone}
+                <strong>Телефон:</strong> {property.phone}
               </p>
 
               <p className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-red-500" />
-                <strong>Email:</strong> {property.email}
+                <strong>Имейл:</strong> {property.email}
               </p>
             </div>
           </div>
 
           <div className="mt-auto">
             <button className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors">
-              Contact Agent
+              Бо Ваколатдор Тамос Гиред
             </button>
           </div>
         </div>
