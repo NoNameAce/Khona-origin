@@ -35,7 +35,7 @@ const Sidebar: React.FC = () => {
   const baseRoutes = [
     { name: "Саҳифаи хона", path: "/", icon: Home },
     { name: "Молҳо", path: "/properties", icon: Building },
-    { name: "Вуруд", path: "/login", icon: LogIn },
+    { name: "Вуруд", path: "/auth/login", icon: LogIn },
     { name: "Дар бораи мо", path: "/about", icon: Info },
     { name: "Контакт", path: "/contact", icon: Mail },
     { name: "Шартҳо", path: "/terms", icon: FileText },

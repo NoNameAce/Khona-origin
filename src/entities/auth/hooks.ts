@@ -1,4 +1,3 @@
-// src/entities/auth/hooks.ts
 'use client';
 import { useState } from 'react';
 import { login, register, logout } from './api';

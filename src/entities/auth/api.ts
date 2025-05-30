@@ -1,4 +1,3 @@
-// src/entities/auth/api.ts
 import { LoginCredentials, RegisterCredentials, AuthResponse } from './types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:7000';
@@ -36,7 +35,5 @@ export const register = async (
 };
 
 export const logout = async (): Promise<void> => {
-  // Clear client-side token
   localStorage.removeItem('token');
-  // Optional: Call backend logout endpoint if exists
 };
