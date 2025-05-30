@@ -120,7 +120,6 @@ export default function AdminDashboardPage() {
           </div>
         </div>
 
-        {/* Properties Table */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Эълонҳои охирини амвол</h2>
           <div className="bg-white shadow rounded-lg overflow-hidden">

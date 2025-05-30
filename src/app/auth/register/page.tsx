@@ -1,4 +1,3 @@
-// src/app/auth/register/page.tsx
 'use client';
 import { useRouter } from 'next/navigation';
 import { storeToken } from '@/entities/auth/token';

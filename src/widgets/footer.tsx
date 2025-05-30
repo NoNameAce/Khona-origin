@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">{/* Add social media icons here */}</div>
+            <div className="flex space-x-4">SocialMediaIcons</div>
           </div>
         </div>
         <div className="mt-8 text-center">

@@ -1,4 +1,3 @@
-// src/app/auth/login/page.tsx
 'use client';
 import { useRouter } from 'next/navigation';
 import { storeToken } from '@/entities/auth/token';
@@ -15,7 +14,7 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
 
-    const form = e.currentTarget; // Now properly typed as HTMLFormElement
+    const form = e.currentTarget;
     const formData = new FormData(form);
     const credentials = {
       email: formData.get('email') as string,

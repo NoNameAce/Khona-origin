@@ -115,7 +115,6 @@ export default function AdminPropertiesPage() {
                   {property.location}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {/* Вазъият – бояд дар оянда илова шавад */}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <Link href={`/dashboard/edit/${property.propertyId}`}>

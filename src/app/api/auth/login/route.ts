@@ -1,4 +1,3 @@
-// src/app/api/auth/login/route.ts
 import { NextResponse } from 'next/server';
 import { LoginCredentials } from '@/entities/auth/types';
 import { login } from '@/entities/auth/api';
@@ -19,7 +18,6 @@ export async function POST(request: Request) {
     console.log(NextResponse.json({ user, token }));
     
     
-    // Return token to be stored in localStorage
     return NextResponse.json({ user, token });
     
   } catch (error) {

@@ -119,6 +119,22 @@
       "password": "$2b$10$eB27y19TA8U98Lnr5HnnhO5mzj7U9aZFZZwDvrSXvKhcybS4U9qr2",
       "phone": "83287610476",
       "role": "user"
+    },
+    {
+      "id": "55cd17cc-0c1d-4bb5-9e9e-d50c8811ed72",
+      "name": "somon",
+      "email": "sossc@gmail.com",
+      "password": "$2b$10$MUdCTf7TvWB.htWksz0rve2s39H9w1Jz84ol30kpHxit3BTnZGjn6",
+      "phone": "+311561651",
+      "role": "user"
+    },
+    {
+      "id": "01e8f647-8618-4acc-9b2a-82b2dd81b848",
+      "name": "scsdc",
+      "email": "asasdc@gmail.com",
+      "password": "$2b$10$D3.ZVMCyWQVHN3kN7D2OMeMq3ywK4bmqNQ6fBCuNuUT/4ZQKcYPxW",
+      "phone": "+788557711",
+      "role": "user"
     }
   ],
   "properties": [

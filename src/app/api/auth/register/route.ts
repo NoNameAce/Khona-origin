@@ -34,6 +34,8 @@ export async function POST(request: Request) {
 
     const { user } = await backendResponse.json();
 
+    
+
     const token = jwt.sign(
       { id: user.id, email: user.email },
       JWT_SECRET,
